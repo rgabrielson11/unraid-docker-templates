@@ -1,29 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <Container version="2">
-  <Beta>False</Beta>
-  <Category>HomeAutomation:</Category>
-  <Name>Magic Mirror</Name>
-  <Overview>MagicMirror² is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror² allows you to convert your hallway or bathroom mirror into your personal assistant. http://magicmirror.builders</Overview>
-  <license>Apache-2</license>
-  <Project>https://github.com/MichMich/MagicMirror</Project>
-  <Support>https://github.com/MichMich/MagicMirror</Support>
-  <Description>
-    MagicMirror² is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror² allows you to convert your hallway or bathroom mirror into your personal assistant. http://magicmirror.builders[br][br]
-  </Description>
-  <Registry>https://github.com/bastilimbach/docker-MagicMirror</Registry>
-  <GitHub>https://github.com/MichMich/MagicMirror</GitHub>
+  <Name>MagicMirror</Name>
   <Repository>bastilimbach/docker-magicmirror</Repository>
-  <BindTime>true</BindTime>
+  <Registry>https://github.com/bastilimbach/docker-MagicMirror</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Environment/>
-   <Variable>
-    <Value/>
-    <Name>TZ</Name>
-    <Mode/>
-   </Variable>
-      </Environment> 
-   <Networking>
-    <Mode>bridge</Mode>
+  <Support>https://github.com/MichMich/MagicMirror</Support>
+  <Project>https://github.com/MichMich/MagicMirror</Project>
+  <Overview>MagicMirror&#xB2; is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror&#xB2; allows you to convert your hallway or bathroom mirror into your p>
+&#xD;
+v2</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI>http://[IP]:[PORT:8888]</WebUI>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1582992223</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>MagicMirror&#xB2; is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror&#xB2; allows you to convert your hallway or bathroom mirror into you>
+&#xD;
+v2</Description>
+  <Networking>
+    <Mode>host</Mode>
     <Publish>
       <Port>
         <HostPort>8888</HostPort>
@@ -34,26 +37,13 @@
   </Networking>
   <Data>
     <Volume>
-      <HostDir></HostDir>
+      <HostDir>/mnt/user/appdata/magicmirror/config</HostDir>
       <ContainerDir>/opt/magic_mirror/config</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
     <Volume>
-      <HostDir></HostDir>
+      <HostDir>/mnt/user/appdata/magicmirror/modules</HostDir>
       <ContainerDir>/opt/magic_mirror/modules</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
-
-  <WebUI>http://[IP]:[PORT:8888]</WebUI>
-  
-  <Labels/>
-  <Config Name="Port" Target="8888" Default="8888" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always" Required="true" Mask="false"></Config>
-  <Config Name="Time Zone" Target="TZ" Default="America/Los_Angeles" Mode="" Description="Container Variable: TZ" Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="Config Path:" Target="/opt/magic_mirror/config" Default="/mnt/user/appdata/magicmirror/config" Mode="rw" Description="Container Path: /opt/magic_mirror/config" Type="Path" Display="advanced-hide" Required="true" Mask="false"></Config>
-  <Config Name="Modules Path:" Target="/opt/magic_mirror/modules" Default="/mnt/user/appdata/magicmirror/modules" Mode="rw" Description="Container Path: /opt/magic_mirror/modules" Type="Path" Display="advanced-hide" Required="true" Mask="false"></Config>
-
-  </Labels>
-
-
-</Container>
