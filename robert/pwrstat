@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>PwrStat</Name>
+  <Repository>dwinks/pwrstat_docker:latest</Repository>
+  <Registry>https://hub.docker.com/r/dwinks/pwrstat_docker</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>true</Privileged>
+  <Support>http://lime-technology.com/forum/index.php?topic=38486.0</Support>
+  <Project/>
+  <Overview>This is a container for the CyberPower 'pwrstat' utility. Basic GET support for a single JSON object response for all parameters of the UPS are implemented. MQTT is also supported, with broker, port, client_id and topic options all being specified in the config file. Optionally, username/password may be specified. TLS support soon. Note: client_id must be unique.</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI>http://[IP]:[PORT:5002]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/spants/unraidtemplates/master/Spants/MQTT.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1583622885</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>This is a container for the CyberPower 'pwrstat' utility. Basic GET support for a single JSON object response for all parameters of the UPS are implemented. MQTT is also supported, with broker, port, client_id and topic options all being specified in the config file. Optionally, username/password may be specified. TLS support soon. Note: client_id must be unique.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>5002</HostPort>
+        <ContainerPort>5002</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/pwr_stat/pwrstat.yaml</HostDir>
+      <ContainerDir>/pwrstat.yaml</ContainerDir>
+      <Mode>ro</Mode>
+    </Volume>
+  </Data>
+  <Environment/>
+  <Labels/>
+  <Config Name="Port" Target="5002" Default="5002" Mode="tcp" Description="Container Port: 5002" Type="Port" Display="always" Required="true" Mask="false">5002</Config>
+  <Config Name="Path" Target="/pwrstat.yaml" Default="/mnt/user/appdata/pwr_stat/pwrstat.yaml" Mode="ro" Description="Container /pwrstat.yaml" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/pwr_stat/pwrstat.yaml</Config>
+  <Config Name="usb" Target="" Default="/dev/bus/usb/002/005" Mode="" Description="Container Device: " Type="Device" Display="always" Required="false" Mask="false">/dev/bus/usb/002/005:/dev/bus/usb/001/001</Config>
+</Container>
