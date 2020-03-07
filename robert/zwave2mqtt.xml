@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>zwave2mqtt</Name>
+  <Repository>robertslando/zwave2mqtt:latest</Repository>
+  <Registry>https://github.com/robertsLando/Zwave2Mqtt-docker</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>true</Privileged>
+  <Support>http://lime-technology.com/forum/index.php?topic=38486.0</Support>
+  <Project/>
+  <Overview>Fully configurable Zwave to MQTT Gateway and Control Panel.</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI>http://[IP]:[PORT:8091]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/spants/unraidtemplates/master/Spants/MQTT.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1583624940</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Fully configurable Zwave to MQTT Gateway and Control Panel.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>8091</HostPort>
+        <ContainerPort>8091</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/ozwmqtt</HostDir>
+      <ContainerDir>/usr/src/app/store</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment/>
+  <Labels/>
+  <Config Name="Port" Target="8091" Default="8091" Mode="tcp" Description="Container Port: 8091" Type="Port" Display="always" Required="true" Mask="false">8091</Config>
+  <Config Name="Path" Target="/usr/src/app/store" Default="/usr/src/app/store" Mode="rw" Description="/mnt/user/appdata/ozwmqtt" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/ozwmqtt</Config>
+  <Config Name="usb" Target="" Default="/dev/ttyACM0" Mode="" Description="Container Device: " Type="Device" Display="always" Required="true" Mask="false">/dev/ttyACM0</Config>
+</Container>
