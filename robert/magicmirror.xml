@@ -2,31 +2,27 @@
 <Container version="2">
   <Name>MagicMirror</Name>
   <Repository>bastilimbach/docker-magicmirror</Repository>
-  <Registry>https://github.com/bastilimbach/docker-MagicMirror</Registry>
-  <Network>host</Network>
+  <Registry>https://hub.docker.com/r/bastilimbach/docker-magicmirror/</Registry>
+  <Network>bridge</Network>
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/MichMich/MagicMirror</Support>
-  <Project>https://github.com/MichMich/MagicMirror</Project>
-  <Overview>MagicMirror&#xB2; is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror&#xB2; allows you to convert your hallway or bathroom mirror into your p>
-&#xD;
-v2</Overview>
+  <Support>http://lime-technology.com/forum/index.php?topic=38486.0</Support>
+  <Project/>
+  <Overview/>
   <Category>HomeAutomation:</Category>
-  <WebUI>http://[IP]:[PORT:8888]</WebUI>
-  <TemplateURL/>
+  <WebUI>http://[IP]:[PORT:8888]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/spants/unraidtemplates/master/Spants/MQTT.xml</TemplateURL>
   <Icon/>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1582992223</DateInstalled>
+  <DateInstalled>1583622158</DateInstalled>
   <DonateText/>
   <DonateLink/>
-  <Description>MagicMirror&#xB2; is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror&#xB2; allows you to convert your hallway or bathroom mirror into you>
-&#xD;
-v2</Description>
+  <Description/>
   <Networking>
-    <Mode>host</Mode>
+    <Mode>bridge</Mode>
     <Publish>
       <Port>
         <HostPort>8888</HostPort>
@@ -37,13 +33,19 @@ v2</Description>
   </Networking>
   <Data>
     <Volume>
-      <HostDir>/mnt/user/appdata/magicmirror/config</HostDir>
-      <ContainerDir>/opt/magic_mirror/config</ContainerDir>
+      <HostDir>/mnt/user/appdata/magicmirror/modules/</HostDir>
+      <ContainerDir>/opt/magic_mirror/modules/</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
     <Volume>
-      <HostDir>/mnt/user/appdata/magicmirror/modules</HostDir>
-      <ContainerDir>/opt/magic_mirror/modules</ContainerDir>
+      <HostDir>/mnt/user/appdata/magicmirror/config/</HostDir>
+      <ContainerDir>/opt/magic_mirror/config</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
+  <Environment/>
+  <Labels/>
+  <Config Name="Port" Target="8080" Default="8888" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always" Required="true" Mask="false">8888</Config>
+  <Config Name="Path2" Target="/opt/magic_mirror/modules/" Default="/mnt/user/appdata/magicmirror/modules/" Mode="rw" Description="Container /opt/magic_mirror/modules/" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/magicmirror/modules/</Config>
+  <Config Name="AppData Config Path1" Target="/opt/magic_mirror/config" Default="/mnt/user/appdata/magicmirror/config/" Mode="rw" Description="Container Path: /opt/magic_mirror/config" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/user/appdata/magicmirror/config/</Config>
+</Container>
