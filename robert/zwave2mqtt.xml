@@ -12,7 +12,7 @@
   <Overview>Fully configurable Zwave to MQTT Gateway and Control Panel.</Overview>
   <Category>HomeAutomation:</Category>
   <WebUI>http://[IP]:[PORT:8091]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/spants/unraidtemplates/master/Spants/MQTT.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/blob/master/robert/zwave2mqtt.xml</TemplateURL>
   <Icon/>
   <ExtraParams/>
   <PostArgs/>
