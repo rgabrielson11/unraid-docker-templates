@@ -12,7 +12,7 @@
   <Overview/>
   <Category>HomeAutomation:</Category>
   <WebUI>http://[IP]:[PORT:8888]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/spants/unraidtemplates/master/Spants/MQTT.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/blob/master/robert/magicmirror.xml</TemplateURL>
   <Icon/>
   <ExtraParams/>
   <PostArgs/>
