@@ -9,7 +9,7 @@
   <Privileged>false</Privileged>
   <Support>https://hub.docker.com/r/webhippie/php-nginx</Support>
   <Project/>
-  <Overview>This is a container for the Roomba rest980 docker web server.</Overview>
+  <Overview>This is a container for the Roomba rest980 docker web server...</Overview>
   <Category>HomeAutomation:</Category>
   <WebUI>http://[IP]:[PORT:3001]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/blob/master/robert/roomba980nginx.xml</TemplateURL>
@@ -17,10 +17,10 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1602007832</DateInstalled>
+  <DateInstalled>1602008679</DateInstalled>
   <DonateText/>
   <DonateLink/>
-  <Description>This is a container for the Roomba rest980 docker - web server.</Description>
+  <Description>This is a container for the Roomba rest980 docker web server...</Description>
   <Networking>
     <Mode>bridge</Mode>
     <Publish>
@@ -31,7 +31,13 @@
       </Port>
     </Publish>
   </Networking>
-  <Data/>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/Home-Assistant-Core/vacuum</HostDir>
+      <ContainerDir>/app</ContainerDir>
+      <Mode>rw,slave</Mode>
+    </Volume>
+  </Data>
   <Environment>
     <Variable>
       <Value>/app</Value>
@@ -40,5 +46,7 @@
     </Variable>
   </Environment>
   <Labels/>
-  <Config Name="ui" Target="3001" Default="" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always" Required="true" Mask="false">3001</Config>
+  <Config Name="appdata path" Target="/app" Default="" Mode="rw,slave" Description="Container Path: /app" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/Home-Assistant-Core/vacuum</Config>
+  <Config Name="UI" Target="8080" Default="3001" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always" Required="true" Mask="false">3001</Config>
+  <Config Name="NGINX_WEBROOT" Target="NGINX_WEBROOT" Default="/app" Mode="" Description="Container Variable: NGINX_WEBROOT" Type="Variable" Display="always" Required="true" Mask="false">/app</Config>
 </Container>
