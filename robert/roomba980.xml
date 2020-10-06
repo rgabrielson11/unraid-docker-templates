@@ -5,22 +5,22 @@
   <Registry>https://hub.docker.com/r/koalazak/rest980</Registry>
   <Network>docker</Network>
   <MyIP/>
-  <Shell>sh</Shell>
+  <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://hub.docker.com/r/koalazak/rest980</Support>
   <Project/>
-  <Overview>This is a container for the Roomba rest980 docker</Overview>
+  <Overview>This is a container for the Roomba rest980 docker.</Overview>
   <Category>HomeAutomation:</Category>
-  <WebUI>http://[IP]:[PORT:5002]/</WebUI>
+  <WebUI>http://[IP]:[PORT:3330]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/blob/master/robert/roomba980.xml</TemplateURL>
   <Icon/>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1583622885</DateInstalled>
+  <DateInstalled>1602006293</DateInstalled>
   <DonateText/>
   <DonateLink/>
-  <Description>This is a container for the Roomba rest980 docker</Description>
+  <Description>This is a container for the Roomba rest980 docker.</Description>
   <Networking>
     <Mode>docker</Mode>
     <Publish>
@@ -33,12 +33,38 @@
   </Networking>
   <Data>
     <Volume>
-      <HostDir>/mnt/user/appdata/roomba980/</HostDir>
-      <ContainerDir>/roomba980/</ContainerDir>
-      <Mode>rw</Mode>
+      <HostDir>/mnt/user/appdata/roomba980</HostDir>
+      <ContainerDir>/data/</ContainerDir>
+      <Mode>rw,slave</Mode>
     </Volume>
   </Data>
-  <Environment/>
+  <Environment>
+    <Variable>
+      <Value></Value>
+      <Name>BLID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value></Value>
+      <Name>PASSWORD</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value></Value>
+      <Name>ROBOT_IP</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>2</Value>
+      <Name>FIRMWARE_VERSION</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
   <Labels/>
   <Config Name="Port" Target="3330" Default="3330" Mode="tcp" Description="Container Port: 3330" Type="Port" Display="always" Required="true" Mask="false">3330</Config>
+  <Config Name="BLID" Target="BLID" Default="" Mode="" Description="Container Variable: BLID" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="PASSWORD" Target="PASSWORD" Default="" Mode="" Description="Container Variable: PASSWORD" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="ROBOT_IP" Target="ROBOT_IP" Default="" Mode="" Description="Container Variable: ROBOT_IP" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="FIRMWARE_VERSION" Target="FIRMWARE_VERSION" Default="2" Mode="" Description="Container Variable: FIRMWARE_VERSION" Type="Variable" Display="always" Required="true" Mask="false">2</Config>
+  <Config Name="persistance" Target="/data/" Default="" Mode="rw,slave" Description="Container Path: /data/" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/roomba980</Config>
 </Container>
