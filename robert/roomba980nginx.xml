@@ -26,7 +26,7 @@
     <Publish>
       <Port>
         <HostPort>3001</HostPort>
-        <ContainerPort>80</ContainerPort>
+        <ContainerPort>8080</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
     </Publish>
@@ -40,5 +40,5 @@
     </Variable>
   </Environment>
   <Labels/>
-  <Config Name="ui" Target="3001" Default="" Mode="tcp" Description="Container Port: 80" Type="Port" Display="always" Required="false" Mask="false">3001</Config>
+  <Config Name="ui" Target="3001" Default="" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always" Required="true" Mask="false">3001</Config>
 </Container>
