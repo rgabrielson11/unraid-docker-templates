@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>roomba980</Name>
+  <Repository>koalazak/rest980:latest</Repository>
+  <Registry>https://hub.docker.com/r/koalazak/rest980</Registry>
+  <Network>docker</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://hub.docker.com/r/koalazak/rest980</Support>
+  <Project/>
+  <Overview>This is a container for the Roomba rest980 docker</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI>http://[IP]:[PORT:5002]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/blob/master/robert/roomba980.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1583622885</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>This is a container for the Roomba rest980 docker</Description>
+  <Networking>
+    <Mode>docker</Mode>
+    <Publish>
+      <Port>
+        <HostPort>3330</HostPort>
+        <ContainerPort>3330</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/roomba980/</HostDir>
+      <ContainerDir>/roomba980/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment/>
+  <Labels/>
+  <Config Name="Port" Target="3330" Default="3330" Mode="tcp" Description="Container Port: 3330" Type="Port" Display="always" Required="true" Mask="false">3330</Config>
+</Container>
