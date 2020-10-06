@@ -12,7 +12,7 @@
   <Overview>This is a container for the CyberPower 'pwrstat' utility. Basic GET support for a single JSON object response for all parameters of the UPS are implemented. MQTT is also supported, with broker, port, client_id and topic options all being specified in the config file. Optionally, username/password may be specified. TLS support soon. Note: client_id must be unique.</Overview>
   <Category>HomeAutomation:</Category>
   <WebUI>http://[IP]:[PORT:5002]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/spants/unraidtemplates/master/Spants/MQTT.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/blob/master/robert/pwrstat.xml</TemplateURL>
   <Icon/>
   <ExtraParams/>
   <PostArgs/>
