@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>roomba980nginx</Name>
+  <Repository>webhippie/php-nginx:latest</Repository>
+  <Registry>https://hub.docker.com/r/webhippie/php-nginx</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://hub.docker.com/r/webhippie/php-nginx</Support>
+  <Project/>
+  <Overview>This is a container for the Roomba rest980 docker web server.</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI>http://[IP]:[PORT:3001]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/blob/master/robert/roomba980nginx.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1602007832</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>This is a container for the Roomba rest980 docker - web server.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>3001</HostPort>
+        <ContainerPort>80</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data/>
+  <Environment>
+    <Variable>
+      <Value>/app</Value>
+      <Name>NGINX_WEBROOT</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="ui" Target="3001" Default="" Mode="tcp" Description="Container Port: 80" Type="Port" Display="always" Required="false" Mask="false">3001</Config>
+</Container>
