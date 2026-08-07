@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>influxdb</Name>
+  <Repository>influxdb:2</Repository>
+  <Registry>https://hub.docker.com/_/influxdb/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://influxdata.com/</Project>
+  <Overview>InfluxDB is an open source time series database with no external dependencies. Useful for recording metrics, events, and performing analytics. This template targets InfluxDB 2.x - note the public CA InfluxDB template (atribe/unRAID-docker) predates v2 and targets the old 1.x layout (port 8083, single /var/lib/influxdb volume), so it is not compatible with this setup.</Overview>
+  <Category>Network:Management Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8086]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/influxdb.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>First-run setup (admin user/org/bucket) happens via the web UI on first boot unless DOCKER_INFLUXDB_INIT_* env vars are set.</Requires>
+  <Config Name="WebUI/API" Target="8086" Default="8086" Mode="tcp" Description="HTTP API and web UI port" Type="Port" Display="always" Required="true" Mask="false">8086</Config>
+  <Config Name="Config" Target="/etc/influxdb2" Default="/mnt/user/appdata/influxdb/config" Mode="rw" Description="InfluxDB 2.x config storage" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/influxdb/config</Config>
+  <Config Name="Data" Target="/var/lib/influxdb2" Default="/mnt/user/appdata/influxdb/data" Mode="rw" Description="InfluxDB 2.x data storage" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/influxdb/data</Config>
+</Container>
