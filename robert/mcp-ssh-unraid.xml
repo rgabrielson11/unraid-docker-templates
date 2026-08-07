@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>mcp-ssh-unraid</Name>
+  <Repository>supercorp/supergateway</Repository>
+  <Registry>https://hub.docker.com/r/supercorp/supergateway</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://github.com/supercorp-ai/supergateway</Project>
+  <Overview>Exposes an MCP stdio server (@aiondadotcom/mcp-ssh) over HTTP/SSE via supergateway, so this Unraid box can be driven over SSH by an MCP client. Mounts the host's SSH directory read-only - only run trusted images here, since it has access to SSH keys used for outbound connections.</Overview>
+  <Category>Tools: Network:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/mcp-ssh-unraid.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams>--entrypoint sh</ExtraParams>
+  <PostArgs>-c "apk add --no-cache openssh-client &amp;&amp; exec npx -y supergateway --port 8808 --stdio \"npx -y @aiondadotcom/mcp-ssh\""</PostArgs>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>SSH keys/config for target hosts present under the mounted ~/.ssh directory.</Requires>
+  <Config Name="Gateway Port" Target="8808" Default="8808" Mode="tcp" Description="Port supergateway listens on" Type="Port" Display="always" Required="true" Mask="false">8808</Config>
+  <Config Name="SSH Directory" Target="/root/.ssh" Default="/root/.ssh" Mode="ro" Description="Host SSH directory (keys + config) mounted read-only" Type="Path" Display="always" Required="true" Mask="false">/root/.ssh</Config>
+</Container>
