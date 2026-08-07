@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>email-podcast-brief</Name>
+  <Repository>ghcr.io/rgabrielson11/email-podcast-brief:latest</Repository>
+  <Registry>https://github.com/rgabrielson11/email-podcast-brief/pkgs/container/email-podcast-brief</Registry>
+  <Network>weblan</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://github.com/rgabrielson11/email-podcast-brief</Project>
+  <Overview>Polls a Gmail inbox for a specific subject line and generates a private podcast feed (audio via Kokoro TTS). Generic image - can run multiple instances with different Gmail/subject/feed config for separate podcast feeds.</Overview>
+  <Category>Productivity: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/email-podcast-brief.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>External docker network "weblan" must exist. A reachable Kokoro TTS instance (KOKORO_URL). A Gmail account with an app password.</Requires>
+  <Config Name="WebUI Port" Target="8080" Default="8585" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always" Required="true" Mask="false">8585</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/email-podcast-brief" Mode="rw" Description="App state/data" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/email-podcast-brief</Config>
+  <Config Name="Audio Output" Target="/audio-out" Default="/mnt/user/podcasts/daily briefing" Mode="rw" Description="Generated podcast audio files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/podcasts/daily briefing</Config>
+  <Config Name="Gmail User" Target="GMAIL_USER" Default="" Mode="" Description="Gmail address to poll" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Gmail App Password" Target="GMAIL_PASSWORD" Default="" Mode="" Description="Gmail app password (not your regular password)" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Subject Filter" Target="SUBJECT_FILTER" Default="" Mode="" Description="Only process emails whose subject matches this" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Poll Window Start" Target="POLL_WINDOW_START" Default="05:00" Mode="" Description="Start of daily polling window (HH:MM)" Type="Variable" Display="advanced" Required="false" Mask="false">05:00</Config>
+  <Config Name="Poll Window End" Target="POLL_WINDOW_END" Default="08:00" Mode="" Description="End of daily polling window (HH:MM)" Type="Variable" Display="advanced" Required="false" Mask="false">08:00</Config>
+  <Config Name="Poll Interval (min)" Target="POLL_INTERVAL_MIN" Default="15" Mode="" Description="Minutes between inbox polls" Type="Variable" Display="advanced" Required="false" Mask="false">15</Config>
+  <Config Name="Feed Base URL" Target="FEED_BASE_URL" Default="" Mode="" Description="Public URL the podcast RSS feed is served from" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Podcast Title" Target="PODCAST_TITLE" Default="My Email Podcast" Mode="" Description="Podcast feed title" Type="Variable" Display="always" Required="false" Mask="false">My Email Podcast</Config>
+  <Config Name="Podcast Description" Target="PODCAST_DESC" Default="" Mode="" Description="Podcast feed description" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Podcast Author" Target="PODCAST_AUTHOR" Default="" Mode="" Description="Podcast feed author" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Kokoro TTS URL" Target="KOKORO_URL" Default="" Mode="" Description="Base URL of the Kokoro TTS server used to generate audio" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Kokoro Voice" Target="KOKORO_VOICE" Default="af_heart" Mode="" Description="Kokoro voice preset" Type="Variable" Display="advanced" Required="false" Mask="false">af_heart</Config>
+  <Config Name="Timezone" Target="TZ" Default="America/Los_Angeles" Mode="" Description="Container timezone" Type="Variable" Display="always" Required="false" Mask="false">America/Los_Angeles</Config>
+  <Config Name="Admin Password" Target="ADMIN_PASSWORD" Default="" Mode="" Description="Password for the app's admin UI" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Feed Username" Target="FEED_USER" Default="podcast" Mode="" Description="Basic-auth username for the RSS feed" Type="Variable" Display="advanced" Required="false" Mask="false">podcast</Config>
+  <Config Name="Feed Password" Target="FEED_PASSWORD" Default="" Mode="" Description="Basic-auth password for the RSS feed (leave blank to disable)" Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+</Container>
