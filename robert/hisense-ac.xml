@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>hisense-ac</Name>
+  <Repository>ghcr.io/rgabrielson11/hisense-ac-patched:1.1.1</Repository>
+  <Registry>https://github.com/rgabrielson11/hisense-ac-bridge/pkgs/container/hisense-ac-patched</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://github.com/rgabrielson11/hisense-ac-bridge</Project>
+  <Overview>hisense-ac-bridge patched for hismart-us Fahrenheit units. Patches deiger/aircon to fix a double F-to-C-to-F conversion bug and enable retained MQTT publishes. Runs in host network mode for local device/mDNS discovery. Requires a device-specific config file (LAN key) and MQTT credentials - see the project README.</Overview>
+  <Category>HomeAutomation:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/hisense-ac.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Host networking. A pre-seeded config_*.json (AC unit LAN key, obtained via aircon discovery) baked into the image at build time, and an options.json with MQTT broker credentials mounted at /data/options.json.</Requires>
+  <Config Name="Config Directory" Target="/config/hisense" Default="/mnt/user/appdata/hisense-ac" Mode="rw" Description="Persistent config/state for the bridge" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hisense-ac</Config>
+  <Config Name="Options File" Target="/data/options.json" Default="/mnt/user/appdata/hisense-ac-docker/options.json" Mode="ro" Description="MQTT broker connection settings (see options.json.example in the repo)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hisense-ac-docker/options.json</Config>
+  <Config Name="Config Dir Env" Target="CONFIG_DIR" Default="/config/hisense" Mode="" Description="Must match the Config Directory mount above" Type="Variable" Display="advanced" Required="true" Mask="false">/config/hisense</Config>
+  <Config Name="Options File Env" Target="OPTIONS_FILE" Default="/data/options.json" Mode="" Description="Must match the Options File mount above" Type="Variable" Display="advanced" Required="true" Mask="false">/data/options.json</Config>
+</Container>
