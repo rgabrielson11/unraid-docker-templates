@@ -19,8 +19,8 @@
   <CPUset/>
   <DonateText/>
   <DonateLink/>
-  <Requires>Host networking. A pre-seeded config_*.json (AC unit LAN key, obtained via aircon discovery) baked into the image at build time, and an options.json with MQTT broker credentials mounted at /data/options.json.</Requires>
-  <Config Name="Config Directory" Target="/config/hisense" Default="/mnt/user/appdata/hisense-ac" Mode="rw" Description="Persistent config/state for the bridge" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hisense-ac</Config>
+  <Requires>Host networking. Place your device-specific config_*.json (AC unit LAN key, obtained via aircon discovery) directly in the Config Directory mount below before first start - it is no longer baked into the image. Also requires an options.json with MQTT broker credentials mounted at /data/options.json.</Requires>
+  <Config Name="Config Directory" Target="/config/hisense" Default="/mnt/user/appdata/hisense-ac" Mode="rw" Description="Persistent config/state for the bridge. Place your config_*.json (AC unit LAN key) here before first start - the container will auto-run discovery if none is found." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hisense-ac</Config>
   <Config Name="Options File" Target="/data/options.json" Default="/mnt/user/appdata/hisense-ac-docker/options.json" Mode="ro" Description="MQTT broker connection settings (see options.json.example in the repo)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hisense-ac-docker/options.json</Config>
   <Config Name="Config Dir Env" Target="CONFIG_DIR" Default="/config/hisense" Mode="" Description="Must match the Config Directory mount above" Type="Variable" Display="advanced" Required="true" Mask="false">/config/hisense</Config>
   <Config Name="Options File Env" Target="OPTIONS_FILE" Default="/data/options.json" Mode="" Description="Must match the Options File mount above" Type="Variable" Display="advanced" Required="true" Mask="false">/data/options.json</Config>
