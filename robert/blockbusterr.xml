@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>blockbusterr</Name>
+  <Repository>ghcr.io/mahcks/blockbusterr:latest</Repository>
+  <Registry>https://ghcr.io/mahcks/blockbusterr</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/mahcks/blockbusterr/issues</Support>
+  <Project>https://github.com/mahcks/blockbusterr</Project>
+  <Overview>Automatically discovers trending, popular, and highly-rated movies and TV shows (via Trakt, TMDB, or Simkl) and adds them to Radarr/Sonarr, or creates Jellyseerr requests for approval. Configure Radarr/Sonarr connections, discovery sources, filters (genre, rating, year, runtime, language), and cron-scheduled jobs (e.g. a daily top-25 job) entirely through the web UI after first launch. No built-in authentication - intended for a trusted LAN only, do not expose this WebUI directly to the internet.</Overview>
+  <Category>Downloaders: MediaApp:Video</Category>
+  <WebUI>http://[IP]:[PORT:9090]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/blockbusterr.xml</TemplateURL>
+  <Icon>https://blockbusterr.dev/favicon.svg</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>A running Radarr and/or Sonarr instance reachable on your network. Optionally: Jellyseerr (for request-approval workflow instead of direct add), and a free API app from whichever discovery source you pick (Trakt, TMDB, or Simkl).</Requires>
+  <Config Name="WebUI Port" Target="9090" Default="9090" Mode="tcp" Description="Port the web UI listens on inside the container" Type="Port" Display="always" Required="true" Mask="false">9090</Config>
+  <Config Name="Data" Target="/app/data" Default="/mnt/user/appdata/blockbusterr/data" Mode="rw" Description="Database, job history and logs" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/blockbusterr/data</Config>
+  <Config Name="External Config" Target="/app/config" Default="/mnt/user/appdata/blockbusterr/config" Mode="rw" Description="Optional: mount a config.yaml here to manage settings as a file instead of only via the web UI" Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/blockbusterr/config</Config>
+  <Config Name="Timezone" Target="TZ" Default="America/Los_Angeles" Mode="" Description="Timezone used for cron job scheduling" Type="Variable" Display="always" Required="false" Mask="false">America/Los_Angeles</Config>
+  <Config Name="Disable UI" Target="DISABLE_UI" Default="false" Mode="" Description="Set true to run headless once jobs are configured (web UI stays reachable for editing unless you also block the port)" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+</Container>
