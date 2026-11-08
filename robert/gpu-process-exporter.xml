@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>gpu-process-exporter</Name>
+  <Repository>nicolargo/glances:ubuntu-latest-full</Repository>
+  <Registry>https://hub.docker.com/r/nicolargo/glances/</Registry>
+  <Network>monitoring</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <ReadMe/>
+  <Overview>Tiny sidecar that polls "nvidia-smi --query-compute-apps" every 5s and writes the GPU process count to InfluxDB (measurement "gpu", field "proc_count") so it can be graphed in Grafana. Glances' own GPU plugin does not expose a process-count field, so this fills that gap using the same base image (already has nvidia-smi, curl, bash via --runtime=nvidia). Entrypoint is overridden to run /gpu-process-count.sh instead of Glances itself.</Overview>
+  <Category>Network:Management Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/gpu-process-exporter.xml</TemplateURL>
+  <Icon>https://github.com/nicolargo/glances/raw/master/glances/outputs/static/images/glances.png</Icon>
+  <ExtraParams>--pid=host --runtime=nvidia --hostname=gabserver --entrypoint=/bin/bash</ExtraParams>
+  <PostArgs>/gpu-process-count.sh</PostArgs>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Requires the "monitoring" Docker network, an influxdb container reachable at hostname "influxdb" on that network, and the script at /mnt/user/appdata/glances/scripts/gpu-process-count.sh on the host.</Requires>
+  <Config Name="Script" Target="/gpu-process-count.sh" Default="/mnt/user/appdata/glances/scripts/gpu-process-count.sh" Mode="ro" Description="Polling script (nvidia-smi -&gt; InfluxDB line protocol via curl)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/glances/scripts/gpu-process-count.sh</Config>
+  <Config Name="NVIDIA_VISIBLE_DEVICES" Target="NVIDIA_VISIBLE_DEVICES" Default="" Mode="" Description="All GPUs visible (dual 3060, per-GPU breakdown via nvidia-smi loop)" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="NVIDIA_DRIVER_CAPABILITIES" Target="NVIDIA_DRIVER_CAPABILITIES" Default="compute,utility" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">compute,utility</Config>
+  <TailscaleStateDir/>
+</Container>

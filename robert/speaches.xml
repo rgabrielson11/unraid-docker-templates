@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>speaches</Name>
+  <Repository>ghcr.io/speaches-ai/speaches:latest-cuda</Repository>
+  <Registry>https://github.com/speaches-ai/speaches/pkgs/container/speaches</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/speaches-ai/speaches</Support>
+  <Project>https://speaches.ai</Project>
+  <Overview>OpenAI-compatible speech-to-text (faster-whisper) server. Used by Mealie for video recipe transcription (POST /v1/audio/transcriptions). Models load on demand and unload after idle TTL.</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8000]/docs</WebUI>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/openai.png</Icon>
+  <ExtraParams>--gpus all</ExtraParams>
+  <PostArgs/>
+  <Config Name="API Port" Target="8000" Default="8020" Mode="tcp" Description="OpenAI-compatible API (/v1)" Type="Port" Display="always" Required="true" Mask="false">8020</Config>
+  <Config Name="HF Model Cache" Target="/home/ubuntu/.cache/huggingface/hub" Default="/mnt/user/appdata/speaches/hf-cache" Mode="rw" Description="Downloaded Whisper models" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/speaches/hf-cache</Config>
+  <Config Name="NVIDIA_VISIBLE_DEVICES" Target="NVIDIA_VISIBLE_DEVICES" Default="all" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">all</Config>
+</Container>

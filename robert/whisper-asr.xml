@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>whisper-asr</Name>
+  <Repository>onerahmet/openai-whisper-asr-webservice:latest-gpu</Repository>
+  <Registry>https://hub.docker.com/r/onerahmet/openai-whisper-asr-webservice</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/ahmetoner/whisper-asr-webservice/issues</Support>
+  <Project>https://github.com/ahmetoner/whisper-asr-webservice</Project>
+  <Overview>Whisper ASR webservice (faster-whisper engine, GPU). Used by Bazarr's Whisper provider to generate subtitles when no provider has them. Separate from the faster-whisper (Wyoming) container used by Home Assistant voice.</Overview>
+  <Category>AI: MediaApp:Other</Category>
+  <WebUI>http://[IP]:[PORT:9000]/docs</WebUI>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/openai.png</Icon>
+  <ExtraParams>--gpus all</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <Config Name="WebUI / API" Target="9000" Default="9000" Mode="tcp" Description="HTTP API port (Bazarr Whisper endpoint)" Type="Port" Display="always" Required="true" Mask="false">9000</Config>
+  <Config Name="ASR_ENGINE" Target="ASR_ENGINE" Default="faster_whisper" Mode="" Description="openai_whisper, faster_whisper or whisperx" Type="Variable" Display="always" Required="true" Mask="false">faster_whisper</Config>
+  <Config Name="ASR_MODEL" Target="ASR_MODEL" Default="medium" Mode="" Description="tiny/base/small/medium/large-v3/turbo" Type="Variable" Display="always" Required="true" Mask="false">medium</Config>
+  <Config Name="ASR_DEVICE" Target="ASR_DEVICE" Default="cuda" Mode="" Description="cuda or cpu" Type="Variable" Display="always" Required="false" Mask="false">cuda</Config>
+  <Config Name="ASR_QUANTIZATION" Target="ASR_QUANTIZATION" Default="int8" Mode="" Description="float32, float16, int8 (int8 = least VRAM)" Type="Variable" Display="always" Required="false" Mask="false">int8</Config>
+  <Config Name="MODEL_IDLE_TIMEOUT" Target="MODEL_IDLE_TIMEOUT" Default="300" Mode="" Description="Seconds of inactivity before the model is unloaded from VRAM (0 = never)" Type="Variable" Display="always" Required="false" Mask="false">300</Config>
+  <Config Name="CUDA_VISIBLE_DEVICES" Target="CUDA_VISIBLE_DEVICES" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Model cache" Target="/root/.cache" Default="/mnt/ssdpool/appdata/whisper-asr" Mode="rw" Description="Downloaded Whisper models" Type="Path" Display="advanced" Required="true" Mask="false">/mnt/ssdpool/appdata/whisper-asr</Config>
+</Container>

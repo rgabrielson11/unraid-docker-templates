@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>subdefaults</Name>
+  <Repository>python:3.13-alpine</Repository>
+  <Registry>https://hub.docker.com/_/python</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <ReadMe/>
+  <Overview>Makes English SDH the default subtitle and merges English forced (foreign-dialogue) lines into it. Fed by hook.sh from Sonarr/Radarr (Custom Script) and Bazarr (post-processing). Script and state: /mnt/user/appdata/subdefaults. Header-only flag edits (mkvpropedit) and .en.default.srt files; never remuxes or deletes anything it did not create.</Overview>
+  <Category>MediaApp:Other Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/subdefaults.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/docker-library/docs/master/python/logo.png</Icon>
+  <ExtraParams>--restart=unless-stopped --tmpfs /work:rw,size=256m</ExtraParams>
+  <PostArgs>sh -c 'apk add -q --no-cache mkvtoolnix &amp;&amp; exec python3 -u /subdefaults/subdefaults.py daemon'</PostArgs>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="App data (script, queue, state, logs)" Target="/subdefaults" Default="/mnt/user/appdata/subdefaults" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/subdefaults</Config>
+  <Config Name="movies" Target="/movies" Default="/mnt/user/movies" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/movies</Config>
+  <Config Name="tv" Target="/tv" Default="/mnt/user/tv" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/tv</Config>
+  <Config Name="SD_TMP" Target="SD_TMP" Default="/work" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">/work</Config>
+  <Config Name="SD_EMBY_URL" Target="SD_EMBY_URL" Default="" Mode="" Description="Emby base URL for per-item refresh" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="SD_EMBY_KEY" Target="SD_EMBY_KEY" Default="" Mode="" Description="Emby API key (app: subdefaults)" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="SD_EMBY_PATHMAP" Target="SD_EMBY_PATHMAP" Default="" Mode="" Description="container path=Emby path" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
+</Container>

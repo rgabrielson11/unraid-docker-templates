@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>roborock-local-server</Name>
+  <Repository>local/roborock-local-server:latest</Repository>
+  <Registry>https://github.com/Python-roborock/local_roborock_server/pkgs/container/local_roborock_server</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/Python-roborock/local_roborock_server/issues</Support>
+  <Project>https://github.com/Python-roborock/local_roborock_server</Project>
+  <ReadMe>https://python-roborock.github.io/local_roborock_server/</ReadMe>
+  <Overview>Local Roborock cloud emulator (HTTPS + MQTT) for the Qrevo Curv 2 Flow. Image is built locally from the main branch (published v1.2.1 lacks the TURN relay). To update: cd /mnt/user/appdata/local_roborock_server &amp;&amp; git pull &amp;&amp; docker build -t local/roborock-local-server:latest . then Apply here. Cert: Let's Encrypt wildcard in data/certs, renewed weekly by the roborock_cert_renew User Script. Firewalla DNS: api-rr.gabfam.com and rr.gabfam.com -&gt; 192.168.111.189. TURN relay UDP 49160-49179 is published IPv4-only in Extra Parameters.</Overview>
+  <Category>HomeAutomation: Network:Other</Category>
+  <WebUI>https://api-rr.gabfam.com/admin</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/roborock-local-server.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/home-assistant/brands/master/core_integrations/roborock/icon.png</Icon>
+  <ExtraParams>--restart unless-stopped -p 0.0.0.0:49160-49179:49160-49179/udp --health-cmd="curl -skf https://127.0.0.1:443/admin" --health-interval=30s --health-timeout=5s --health-retries=5 --health-start-period=20s</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="HTTPS (API + admin)" Target="443" Default="443" Mode="tcp" Description="Must stay 443 so the onboarding host fits the camera 15-char limit" Type="Port" Display="always" Required="true" Mask="false">443</Config>
+  <Config Name="MQTT TLS" Target="8881" Default="8881" Mode="tcp" Description="Vacuum and HA MQTT over TLS" Type="Port" Display="always" Required="true" Mask="false">8881</Config>
+  <Config Name="TURN" Target="3478" Default="3478" Mode="udp" Description="Camera WebRTC TURN listener (relay range is in Extra Parameters)" Type="Port" Display="always" Required="false" Mask="false">3478</Config>
+  <Config Name="Config file" Target="/app/config.toml" Default="/mnt/user/appdata/local_roborock_server/config.toml" Mode="ro" Description="Server config" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/local_roborock_server/config.toml</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/local_roborock_server/data" Mode="rw" Description="Inventory, keys, certs, acme state" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/local_roborock_server/data</Config>
+  <Config Name="Secrets" Target="/run/secrets" Default="" Mode="ro" Description="Cloudflare token" Type="Path" Display="advanced" Required="true" Mask="false"></Config>
+  <TailscaleStateDir/>
+</Container>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>glances-exporter</Name>
+  <Repository>nicolargo/glances:ubuntu-latest-full</Repository>
+  <Registry>https://hub.docker.com/r/nicolargo/glances/</Registry>
+  <Network>monitoring</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>true</Privileged>
+  <Support>https://forums.unraid.net/index.php?topic=51498.0</Support>
+  <Project>https://github.com/nicolargo/glances</Project>
+  <ReadMe/>
+  <Overview>Headless Glances instance in standalone mode, dedicated to exporting CPU/RAM/GPU/process stats to InfluxDB every 5s. Split out from the main "glances" web UI container because Glances cannot run -w (webserver) and --export in the same process.</Overview>
+  <Category>Network:Management Network:Other Tools:Utilities</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/glances-exporter.xml</TemplateURL>
+  <Icon>https://github.com/nicolargo/glances/raw/master/glances/outputs/static/images/glances.png</Icon>
+  <ExtraParams>--pid=host --runtime=nvidia --hostname=gabserver</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Requires the "monitoring" Docker network (docker network create monitoring) and an influxdb container reachable at hostname "influxdb" on that network.</Requires>
+  <Config Name="Host Path 1" Target="/mnt" Default="/mnt" Mode="ro" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt</Config>
+  <Config Name="Host Path 2" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="" Type="Path" Display="always" Required="true" Mask="false">/var/run/docker.sock</Config>
+  <Config Name="Host Path 3" Target="/etc/glances/glances.conf" Default="/mnt/user/appdata/glances/glances.conf" Mode="ro" Description="Glances config with InfluxDB2 export settings" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/glances/glances.conf</Config>
+  <Config Name="Key 1" Target="GLANCES_OPT" Default="" Mode="" Description="Standalone mode, no web UI - pushes stats to InfluxDB every 5s" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="NVIDIA_VISIBLE_DEVICES" Target="NVIDIA_VISIBLE_DEVICES" Default="" Mode="" Description="All GPUs visible for GPU stats plugin (dual 3060)" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="NVIDIA_DRIVER_CAPABILITIES" Target="NVIDIA_DRIVER_CAPABILITIES" Default="compute,utility" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">compute,utility</Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">America/Los_Angeles</Config>
+  <TailscaleStateDir/>
+</Container>

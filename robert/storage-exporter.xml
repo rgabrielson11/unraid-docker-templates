@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>storage-exporter</Name>
+  <Repository>nicolargo/glances:ubuntu-latest-full</Repository>
+  <Registry>https://hub.docker.com/r/nicolargo/glances/</Registry>
+  <Network>monitoring</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <ReadMe/>
+  <Overview>Tiny sidecar that reads Unraid's own cached array/disk status (/var/local/emhttp/disks.ini) every 30s and writes per-disk temperature, capacity used/free/percent, and cumulative read/write/error counters to InfluxDB (measurement "storage_disk"), plus an array-wide capacity rollup (measurement "storage_array"). Reads emhttp's already-cached values only - never spins up sleeping disks or runs smartctl directly. Entrypoint overridden to run /storage-stats.sh instead of Glances itself.</Overview>
+  <Category>Network:Management Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/storage-exporter.xml</TemplateURL>
+  <Icon>https://github.com/nicolargo/glances/raw/master/glances/outputs/static/images/glances.png</Icon>
+  <ExtraParams>--hostname=gabserver --entrypoint=/bin/bash</ExtraParams>
+  <PostArgs>/storage-stats.sh</PostArgs>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Requires the "monitoring" Docker network, an influxdb container reachable at hostname "influxdb" on that network, and the script at /mnt/user/appdata/glances/scripts/storage-stats.sh on the host.</Requires>
+  <Config Name="Script" Target="/storage-stats.sh" Default="/mnt/user/appdata/glances/scripts/storage-stats.sh" Mode="ro" Description="Parses disks.ini -&gt; InfluxDB line protocol via curl" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/glances/scripts/storage-stats.sh</Config>
+  <Config Name="EmhttpState" Target="/emhttp" Default="/var/local/emhttp" Mode="ro" Description="Unraid's cached disk/array status (disks.ini)" Type="Path" Display="always" Required="true" Mask="false">/var/local/emhttp</Config>
+  <TailscaleStateDir/>
+</Container>

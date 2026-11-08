@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>kopia-sync-status</Name>
+  <Repository>nicolargo/glances:ubuntu-latest-full</Repository>
+  <Registry>https://hub.docker.com/r/nicolargo/glances/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <ReadMe/>
+  <Overview>Tiny static-file server exposing the Kopia-to-Backblaze-B2 sync status. The nightly kopia_sync_b2 Unraid User Script runs a `kopia repository sync-to --dry-run` verification after every sync and writes the result (in_sync / cleanup_pending / behind / error, blob counts, last-checked time) to sync-b2-status.json in this container's mounted folder. This container just serves that one file over plain HTTP so the Homepage dashboard's "Kopia Local - Sources 2/2" tile can poll it. No image build needed - reuses the glances image only for its python3 runtime; the container's own CMD is overridden to run python's http.server instead of Glances.</Overview>
+  <Category>Network:Management Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8098]/sync-b2-status.json</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/kopia-sync-status.xml</TemplateURL>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/kopia.png</Icon>
+  <ExtraParams/>
+  <PostArgs>python3 -m http.server 8098 --directory /data --bind 0.0.0.0</PostArgs>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Requires the kopia_sync_b2 Unraid User Script to be writing sync-b2-status.json into the mounted path below - this container only serves the file, it does not generate it.</Requires>
+  <Config Name="WebUI Port" Target="8098" Default="8098" Mode="tcp" Description="Host port serving sync-b2-status.json" Type="Port" Display="always" Required="true" Mask="false">8098</Config>
+  <Config Name="Status Folder" Target="/data" Default="/mnt/user/appdata/kopia/logs/status" Mode="ro" Description="Folder containing sync-b2-status.json, written nightly by kopia_sync_b2" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/kopia/logs/status</Config>
+</Container>

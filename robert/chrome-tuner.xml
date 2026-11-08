@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>ChromeTuner</Name>
+  <Repository>chrome-tuner:latest</Repository>
+  <Registry/>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>Single-tuner virtual HDHomeRun. Plays a web page in Chrome on a virtual display and serves the screen and audio as MPEG-TS (H.264 via NVENC + AAC) for Emby Live TV.&#13;
+&#13;
+Channels: edit /config/channels.yaml (live, no restart).&#13;
+Emby: add an HDHomeRun tuner at http://[IP]:5004, or an M3U tuner at http://[IP]:5004/playlist.m3u. Guide: XMLTV at http://[IP]:5004/epg.xml.&#13;
+Sign in to sites: WebUI page, "Open in tuner browser", then use noVNC on port 6080.</Overview>
+  <Category>MediaServer:Video</Category>
+  <WebUI>http://[IP]:[PORT:5004]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/chrome-tuner.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/google-chrome.png</Icon>
+  <ExtraParams>--runtime=nvidia --shm-size=2g --stop-timeout 20</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Nvidia Driver plugin (for NVENC). Falls back to CPU x264 without it.</Requires>
+  <Config Name="Tuner HTTP" Target="5004" Default="5004" Mode="tcp" Description="HDHomeRun / M3U / XMLTV / stream port." Type="Port" Display="always" Required="true" Mask="false">5004</Config>
+  <Config Name="noVNC" Target="6080" Default="6080" Mode="tcp" Description="Remote view of the tuner's Chrome, for signing in to sites." Type="Port" Display="always" Required="true" Mask="false">6080</Config>
+  <Config Name="Appdata" Target="/config" Default="/mnt/ssdpool/appdata/chrome-tuner/config" Mode="rw" Description="channels.yaml, scripts and the Chrome profile (logins)." Type="Path" Display="always" Required="true" Mask="false">/mnt/ssdpool/appdata/chrome-tuner/config</Config>
+  <Config Name="NVIDIA_VISIBLE_DEVICES" Target="NVIDIA_VISIBLE_DEVICES" Default="all" Mode="{3}" Description="GPU UUID for NVENC (8GB RTX 3060, shared with Emby/Frigate/Immich)." Type="Variable" Display="always" Required="true" Mask="false">all</Config>
+  <Config Name="NVIDIA_DRIVER_CAPABILITIES" Target="NVIDIA_DRIVER_CAPABILITIES" Default="compute,video,utility" Mode="{3}" Description="Must include video for NVENC." Type="Variable" Display="advanced" Required="true" Mask="false">compute,video,utility</Config>
+  <Config Name="Tuner name" Target="TUNER_NAME" Default="Chrome Tuner" Mode="{3}" Description="Name shown in Emby." Type="Variable" Display="always" Required="false" Mask="false">Chrome Tuner</Config>
+  <Config Name="Video bitrate" Target="VIDEO_BITRATE" Default="6M" Mode="{3}" Description="H.264 bitrate." Type="Variable" Display="always" Required="false" Mask="false">6M</Config>
+  <Config Name="Resolution" Target="RESOLUTION" Default="1920x1080" Mode="{3}" Description="Virtual display and output size." Type="Variable" Display="advanced" Required="false" Mask="false">1920x1080</Config>
+  <Config Name="Framerate" Target="FRAMERATE" Default="30" Mode="{3}" Description="Capture framerate (30 or 60)." Type="Variable" Display="advanced" Required="false" Mask="false">30</Config>
+  <Config Name="Encoder" Target="ENCODER" Default="auto" Mode="{3}" Description="auto, nvenc or x264." Type="Variable" Display="advanced" Required="false" Mask="false">auto</Config>
+  <Config Name="Idle timeout" Target="IDLE_TIMEOUT" Default="20" Mode="{3}" Description="Seconds after the last viewer leaves before the tuner stops." Type="Variable" Display="advanced" Required="false" Mask="false">20</Config>
+  <Config Name="VNC password" Target="VNC_PASSWORD" Default="" Mode="{3}" Description="Optional password for noVNC. Blank = no password (LAN only)." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="{3}" Description="Timezone." Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
+  <Config Name="Debug" Target="DEBUG" Default="" Mode="{3}" Description="Set to 1 for verbose logs (ffmpeg, Chrome)." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Emby URL" Target="EMBY_URL" Default="" Mode="{3}" Description="Emby server URL, used to trigger a guide refresh when the YouTube TV channel changes." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Emby API key" Target="EMBY_API_KEY" Default="" Mode="{3}" Description="Emby API key (Dashboard &gt; Advanced &gt; API Keys)." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Start page" Target="START_URL" Default="https://tv.youtube.com/live" Mode="{3}" Description="Page the tuner browser opens on start." Type="Variable" Display="advanced" Required="false" Mask="false">https://tv.youtube.com/live</Config>
+  <Config Name="Pushover app token" Target="PUSHOVER_TOKEN" Default="" Mode="{3}" Description="Pushover application token for channel-lock watchdog alerts (optional)." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Pushover user key" Target="PUSHOVER_USER" Default="" Mode="{3}" Description="Pushover user (or group) key for watchdog alerts (optional)." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+</Container>

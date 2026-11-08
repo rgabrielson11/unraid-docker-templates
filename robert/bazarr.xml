@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>bazarr</Name>
+  <Repository>lscr.io/linuxserver/bazarr</Repository>
+  <Registry>https://github.com/orgs/linuxserver/packages/container/package/bazarr</Registry>
+  <Network>container:GluetunVPN</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/linuxserver/docker-bazarr/issues/new/choose</Support>
+  <Project>https://www.bazarr.media/</Project>
+  <ReadMe/>
+  <Overview>Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements.  </Overview>
+  <Category>Downloaders: MediaApp:Other</Category>
+  <WebUI>http://[IP]:[PORT:6767]/system/status</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/bazarr.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr-logo.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink>https://github.com/sponsors/hotio</DonateLink>
+  <Requires/>
+  <Config Name="Host Path for /config" Target="/config" Default="/mnt/user/appdata/bazarr" Mode="rw" Description="" Type="Path" Display="always-hide" Required="true" Mask="false">/mnt/user/appdata/bazarr</Config>
+  <Config Name="tv" Target="/tv" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="movies" Target="/movies" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="backups" Target="/backups/" Default="" Mode="rw,slave" Description="" Type="Path" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="PUID" Target="PUID" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="PGID" Target="PGID" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="UMASK" Target="UMASK" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="custom-cont-init.d" Target="/custom-cont-init.d" Default="/mnt/user/appdata/bazarr-custom-init" Mode="ro" Description="Startup scripts (Emby refresh fix for Bazarr Jellyfin integration)" Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/bazarr-custom-init</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="advanced-hide" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="advanced-hide" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="002" Mode="" Description="" Type="Variable" Display="advanced-hide" Required="false" Mask="false">002</Config>
+  <Config Name="ARGS" Target="ARGS" Default="" Mode="" Description="" Type="Variable" Display="advanced-hide" Required="false" Mask="false"></Config>
+  <Config Name="DEBUG" Target="DEBUG" Default="no|yes" Mode="" Description="" Type="Variable" Display="advanced-hide" Required="false" Mask="false">no|yes</Config>
+  <TailscaleStateDir/>
+  <Config Name="subdefaults hook" Target="/subdefaults" Default="/mnt/user/appdata/subdefaults" Mode="rw" Description="subtitle defaults hook + queue" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/subdefaults</Config>
+</Container>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Crowbarr-CUDA</Name>
+  <Repository>crowbarr-fork:latest-cuda</Repository>
+  <Registry>https://github.com/rgabrielson11/crowbarr</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/rgabrielson11/crowbarr/issues</Support>
+  <Project>https://github.com/rgabrielson11/crowbarr</Project>
+  <ReadMe>https://github.com/amanofvaly/crowbarr/blob/main/docs/unraid.md</ReadMe>
+  <Overview>Audio-grounded subtitle synchronization and transcription for Sonarr, Radarr and Bazarr.&#13;
+&#13;
+Crowbarr watches your Sonarr and Radarr libraries and keeps subtitles in sync with the dialogue. It waits for Bazarr to find a subtitle, checks its timing against the audio with Whisper, and corrects it only when the audio says it is wrong. When no subtitle turns up, it transcribes one. Results are written as a new .crowbarr.en.srt file next to the video. Existing media and subtitles are never modified.&#13;
+&#13;
+This template uses an NVIDIA GPU for speech recognition. Install the Nvidia Driver plugin first, then select CUDA under Settings after the first start. Without a GPU, install Crowbarr instead.&#13;
+&#13;
+Setup: map /tv and /movies to the same shares Sonarr and Radarr use. The container runs as nobody:users (99:100), so those shares must be writable by that account. Open the WebUI, create your account, then add Sonarr, Radarr and Plex under Settings. Speech models download into appdata on first use.</Overview>
+  <Category>MediaApp:Video</Category>
+  <WebUI>http://[IP]:[PORT:8449]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/crowbarr-cuda.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/amanofvaly/unraid-templates/main/icon.png</Icon>
+  <ExtraParams>--runtime=nvidia --user 99:100 --init --stop-timeout 45 --security-opt no-new-privileges:true --cap-drop ALL</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Nvidia Driver plugin and a CUDA-capable NVIDIA GPU. Sonarr or Radarr. Outbound internet access on first run to download speech models.</Requires>
+  <Config Name="WebUI" Target="8449" Default="8449" Mode="tcp" Description="Dashboard port." Type="Port" Display="always" Required="true" Mask="false">8449</Config>
+  <Config Name="Path: /tv" Target="/tv" Default="" Mode="rw" Description="Your TV library. Use the same share Sonarr uses so no path mapping is needed." Type="Path" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Path: /movies" Target="/movies" Default="" Mode="rw" Description="Your movie library. Use the same share Radarr uses so no path mapping is needed." Type="Path" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="NVIDIA_VISIBLE_DEVICES" Target="NVIDIA_VISIBLE_DEVICES" Default="all" Mode="{3}" Description="GPU UUID from the Nvidia Driver plugin page, or all." Type="Variable" Display="always" Required="true" Mask="false">all</Config>
+  <Config Name="Appdata" Target="/config" Default="/mnt/ssdpool/appdata/Crowbarr-CUDA" Mode="rw" Description="Database, settings, speech models and cached transcripts." Type="Path" Display="advanced" Required="true" Mask="false">/mnt/ssdpool/appdata/Crowbarr-CUDA</Config>
+  <Config Name="NVIDIA_DRIVER_CAPABILITIES" Target="NVIDIA_DRIVER_CAPABILITIES" Default="compute,utility" Mode="{3}" Description="Driver capabilities passed to the container." Type="Variable" Display="advanced" Required="true" Mask="false">compute,utility</Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="{3}" Description="Timezone for logs and quiet hours." Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="{3}" Description="Timezone for logs and quiet hours." Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
+  <TailscaleStateDir/>
+</Container>

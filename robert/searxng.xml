@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>SearXNG</Name>
+  <Repository>searxng/searxng:latest</Repository>
+  <Registry>https://hub.docker.com/r/searxng/searxng</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/searxng/searxng/issues</Support>
+  <Project>https://docs.searxng.org/</Project>
+  <Overview>SearXNG self-hosted metasearch engine. Used as a local, private web-search backend for the Home Assistant Assist voice pipeline (Ollama tool-calling), so the local LLM can answer general/current-events questions without any cloud search API. JSON API is enabled (search.formats includes json in settings.yml) for the HA web_search script to consume.</Overview>
+  <Category>Tools: Search</Category>
+  <WebUI>http://[IP]:[PORT:8092]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/searxng.xml</TemplateURL>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/searxng.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="WebUI Port" Target="8080" Default="8092" Mode="tcp" Description="Host port for the SearXNG web/JSON API" Type="Port" Display="always" Required="true" Mask="false">8092</Config>
+  <Config Name="AppData Config Path" Target="/etc/searxng" Default="/mnt/user/appdata/SearXNG" Mode="rw" Description="Persistent settings.yml (JSON API enabled here for HA)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/SearXNG</Config>
+  <Config Name="SEARXNG_BASE_URL" Target="SEARXNG_BASE_URL" Default="http://192.168.111.189:8092/" Mode="" Description="Base URL SearXNG reports to itself" Type="Variable" Display="always" Required="true" Mask="false">http://192.168.111.189:8092/</Config>
+  <Config Name="UMASK_SET" Target="UMASK_SET" Default="022" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
+  <Config Name="Cache Path" Target="/var/cache/searxng" Default="/mnt/user/appdata/SearXNG/cache" Mode="rw" Description="SearXNG runtime cache (was an anonymous docker volume before this template)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/SearXNG/cache</Config>
+</Container>

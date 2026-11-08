@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>atv-optimizer</Name>
+  <Repository>atv-optimizer:local</Repository>
+  <Registry/>
+  <Network>host</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/bryanroscoe/shield_optimizer/issues</Support>
+  <Project>https://github.com/bryanroscoe/shield_optimizer</Project>
+  <ReadMe/>
+  <Overview>ATV Optimizer (shield_optimizer v2) desktop app running in a KasmVNC browser desktop. Debloat and tune Nvidia Shield, Onn 4K Pro, Chromecast/Google TV over ADB. Locally built image - rebuild with: docker build --pull -t atv-optimizer:local /mnt/user/appdata/atv-optimizer/build</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:3820/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/atv-optimizer.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/bryanroscoe/shield_optimizer/main/v2/src-tauri/icons/128x128.png</Icon>
+  <ExtraParams>--shm-size=1gb</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Enable Network debugging (or Wireless debugging) in Developer Options on the TV, and accept the "Allow debugging?" prompt on first connect.</Requires>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/atv-optimizer/config" Mode="rw" Description="App settings, downloaded adb, adb auth keys, snapshots." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/atv-optimizer/config</Config>
+  <Config Name="Web UI port (HTTP)" Target="CUSTOM_PORT" Default="3820" Mode="" Description="KasmVNC HTTP port (host network, so this is the host port)." Type="Variable" Display="always" Required="true" Mask="false">3820</Config>
+  <Config Name="Web UI port (HTTPS)" Target="CUSTOM_HTTPS_PORT" Default="3821" Mode="" Description="KasmVNC HTTPS port." Type="Variable" Display="always" Required="true" Mask="false">3821</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="" Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
+  <Config Name="Web UI user (optional)" Target="CUSTOM_USER" Default="" Mode="" Description="Set with password to require basic auth on the web desktop." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Web UI password (optional)" Target="PASSWORD" Default="" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <TailscaleStateDir/>
+</Container>

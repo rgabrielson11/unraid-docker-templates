@@ -13,7 +13,7 @@
   <Category>HomeAutomation:</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/hisense-ac.xml</TemplateURL>
-  <Icon/>
+  <Icon>https://github.com/rgabrielson11/unraid-docker-templates/blob/master/robert/icons8-generic-64.png?raw=true</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
   <PostArgs/>
   <CPUset/>
