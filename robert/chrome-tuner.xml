@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>ChromeTuner</Name>
-  <Repository>chrome-tuner:latest</Repository>
-  <Registry/>
+  <Repository>ghcr.io/rgabrielson11/chrome-tuner:latest</Repository>
+  <Registry>https://github.com/rgabrielson11/chrome-tuner/pkgs/container/chrome-tuner</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
+  <Support>https://github.com/rgabrielson11/chrome-tuner/issues</Support>
+  <Project>https://github.com/rgabrielson11/chrome-tuner</Project>
   <Overview>Single-tuner virtual HDHomeRun. Plays a web page in Chrome on a virtual display and serves the screen and audio as MPEG-TS (H.264 via NVENC + AAC) for Emby Live TV.&#13;
 &#13;
 Channels: edit /config/channels.yaml (live, no restart).&#13;

@@ -21,7 +21,7 @@ All live in `robert/`. Secrets (API keys, tokens, passwords) are always blank: f
 | `atv-optimizer.xml` | atv-optimizer | ATV Optimizer (shield_optimizer v2) desktop app running in a KasmVNC browser desktop. |
 | `bazarr.xml` | bazarr | Bazarr is a companion application to Sonarr and Radarr. |
 | `blockbusterr.xml` | blockbusterr | Automatically discovers trending, popular, and highly-rated movies and TV shows (via Trakt, TMDB, or Simkl) and adds them to Radarr/Sonarr,  |
-| `chrome-tuner.xml` | ChromeTuner | Single-tuner virtual HDHomeRun. |
+| `chrome-tuner.xml` | ChromeTuner | Single-tuner virtual HDHomeRun: a Chrome tab as an Emby Live TV channel ([source](https://github.com/rgabrielson11/chrome-tuner)). |
 | `crowbarr-cuda.xml` | Crowbarr-CUDA | Audio-grounded subtitle synchronization and transcription for Sonarr, Radarr and Bazarr. |
 | `email-podcast-brief.xml` | email-podcast-brief | Polls a Gmail inbox for a specific subject line and generates a private podcast feed (audio via Kokoro TTS). |
 | `glances-exporter.xml` | glances-exporter | Headless Glances instance in standalone mode, dedicated to exporting CPU/RAM/GPU/process stats to InfluxDB every 5s. |
