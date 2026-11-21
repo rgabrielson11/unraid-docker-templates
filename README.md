@@ -23,6 +23,7 @@ All live in `robert/`. Secrets (API keys, tokens, passwords) are always blank: f
 | `blockbusterr.xml` | blockbusterr | Automatically discovers trending, popular, and highly-rated movies and TV shows (via Trakt, TMDB, or Simkl) and adds them to Radarr/Sonarr,  |
 | `chrome-tuner.xml` | ChromeTuner | Single-tuner virtual HDHomeRun: a Chrome tab as an Emby Live TV channel ([source](https://github.com/rgabrielson11/chrome-tuner)). |
 | `crowbarr-cuda.xml` | Crowbarr-CUDA | Audio-grounded subtitle synchronization and transcription for Sonarr, Radarr and Bazarr. |
+| `crowdsec.xml` | CrowdSec | CrowdSec security engine: parses Nginx Proxy Manager logs and serves ban decisions to NPM's OpenResty bouncer (LAPI on host port 8180). |
 | `email-podcast-brief.xml` | email-podcast-brief | Polls a Gmail inbox for a specific subject line and generates a private podcast feed (audio via Kokoro TTS). |
 | `glances-exporter.xml` | glances-exporter | Headless Glances instance in standalone mode, dedicated to exporting CPU/RAM/GPU/process stats to InfluxDB every 5s. |
 | `gpu-process-exporter.xml` | gpu-process-exporter | Tiny sidecar that polls "nvidia-smi --query-compute-apps" every 5s and writes the GPU process count to InfluxDB (measurement "gpu", field "p |

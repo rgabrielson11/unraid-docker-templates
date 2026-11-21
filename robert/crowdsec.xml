@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>CrowdSec</Name>
+  <Repository>crowdsecurity/crowdsec:latest</Repository>
+  <Registry>https://hub.docker.com/r/crowdsecurity/crowdsec</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://discourse.crowdsec.net/</Support>
+  <Project>https://www.crowdsec.net/</Project>
+  <Overview>CrowdSec security engine. Parses Nginx Proxy Manager logs and serves ban decisions to the OpenResty bouncer in Nginx-Proxy-Manager-CrowdSec via the Local API (host port 8180).</Overview>
+  <Category>Security: Network:Other</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/rgabrielson11/unraid-docker-templates/master/robert/crowdsec.xml</TemplateURL>
+  <Icon>https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/crowdsec.png</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1763746000</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Local API" Target="8080" Default="8180" Mode="tcp" Description="LAPI used by bouncers" Type="Port" Display="always" Required="true" Mask="false">8180</Config>
+  <Config Name="Config" Target="/etc/crowdsec" Default="/mnt/user/appdata/crowdsec/config" Mode="rw" Description="CrowdSec config" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crowdsec/config</Config>
+  <Config Name="Data" Target="/var/lib/crowdsec/data" Default="/mnt/user/appdata/crowdsec/data" Mode="rw" Description="CrowdSec database" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crowdsec/data</Config>
+  <Config Name="NPM logs" Target="/var/log/npm" Default="/mnt/user/appdata/NginxProxyManager/log" Mode="ro" Description="Nginx Proxy Manager log directory (read-only)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/NginxProxyManager/log</Config>
+  <Config Name="COLLECTIONS" Target="COLLECTIONS" Default="" Mode="" Description="Hub collections to install" Type="Variable" Display="always" Required="false" Mask="false">crowdsecurity/nginx-proxy-manager crowdsecurity/base-http-scenarios crowdsecurity/http-cve crowdsecurity/whitelist-good-actors</Config>
+  <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="" Description="Timezone" Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
+</Container>
