@@ -25,6 +25,7 @@
   <Config Name="Config" Target="/etc/crowdsec" Default="/mnt/user/appdata/crowdsec/config" Mode="rw" Description="CrowdSec config" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crowdsec/config</Config>
   <Config Name="Data" Target="/var/lib/crowdsec/data" Default="/mnt/user/appdata/crowdsec/data" Mode="rw" Description="CrowdSec database" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crowdsec/data</Config>
   <Config Name="NPM logs" Target="/var/log/npm" Default="/mnt/user/appdata/NginxProxyManager/log" Mode="ro" Description="Nginx Proxy Manager log directory (read-only)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/NginxProxyManager/log</Config>
+  <Config Name="NPM fallback logs" Target="/var/log/npm-logs" Default="/mnt/user/appdata/NginxProxyManager/logs" Mode="ro" Description="NPM fallback (default host) log directory (read-only)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/NginxProxyManager/logs</Config>
   <Config Name="COLLECTIONS" Target="COLLECTIONS" Default="" Mode="" Description="Hub collections to install" Type="Variable" Display="always" Required="false" Mask="false">crowdsecurity/nginx-proxy-manager crowdsecurity/base-http-scenarios crowdsecurity/http-cve crowdsecurity/whitelist-good-actors</Config>
   <Config Name="TZ" Target="TZ" Default="America/Los_Angeles" Mode="" Description="Timezone" Type="Variable" Display="advanced" Required="false" Mask="false">America/Los_Angeles</Config>
 </Container>
